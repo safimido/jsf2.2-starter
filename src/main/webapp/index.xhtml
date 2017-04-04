@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Etudiant</title>
+</h:head>
+<h:body>
+    <h:form>
+        <p:panelGrid columns="3">
+            <f:facet name="header">
+                Gestion des Etudiants
+            </f:facet>
+            <p:outputLabel for="cne" value="CNE :"/>
+            <p:inputText id="cne" required="true" value="#{gestionEtudiant.etudiant.cne}">
+                <f:validateLength maximum="24" minimum="3"/>
+                <p:clientValidator/>
+            </p:inputText>
+            <p:message for="cne"/>
+
+            <p:outputLabel for="nom" value="Nom :"/>
+            <p:inputText id="nom" required="true" value="#{gestionEtudiant.etudiant.nom}">
+                <f:validateLength maximum="24" minimum="3"/>
+                <p:clientValidator/>
+            </p:inputText>
+            <p:message for="nom"/>
+
+            <p:outputLabel for="prenom" value="Prenom :"/>
+            <p:inputText id="prenom" required="true" value="#{gestionEtudiant.etudiant.prenom}">
+                <f:validateLength maximum="24" minimum="3"/>
+                <p:clientValidator/>
+            </p:inputText>
+            <p:message for="prenom"/>
+
+            <p:outputLabel for="ville" value="Ville :"/>
+            <p:inputText id="ville" value="#{gestionEtudiant.etudiant.ville}">
+                <f:validateLength maximum="24" minimum="3"/>
+                <p:clientValidator/>
+            </p:inputText>
+            <p:message for="ville"/>
+
+            <p:outputLabel for="dateNaissance" value="Date Naissance :"/>
+            <p:inputText id="dateNaissance" required="true" value="#{gestionEtudiant.etudiant.dateNaissance}">
+                <f:validateLength maximum="24" minimum="3"/>
+                <p:clientValidator/>
+            </p:inputText>
+            <p:message for="dateNaissance"/>
+
+            <p:outputLabel for="bourse" value="Bourse :"/>
+            <p:inputText id="bourse" value="#{gestionEtudiant.etudiant.bourse}">
+                <f:validateDoubleRange minimum="0" maximum="100000"/>
+                <p:clientValidator/>
+            </p:inputText>
+            <p:message for="bourse"/>
+        </p:panelGrid>
+        <p:panelGrid columns="2">
+            <p:commandButton
+                    id="validerEtudiant"
+                    value="valider"
+                    validateClient="true"
+                    action="#{gestionEtudiant.validerEtudiant()}">
+            </p:commandButton>
+            <p:commandButton
+                    id="modifierEtudiant"
+                    value="modifier"
+                    action="#{gestionEtudiant.modifierEtudiant}">
+                <f:ajax execute="@form" render="@form"/>
+            </p:commandButton>
+            <p:commandButton
+                    id="rechercherEtudiant"
+                    value="rechercher"
+                    action="#{gestionEtudiant.rechercherEtudiant}">
+                <f:ajax execute="@form" render="@form"/>
+            </p:commandButton>
+            <p:commandButton
+                    id="supprimerEtudiant"
+                    value="supprimer"
+                    action="#{gestionEtudiant.supprimerEtudiant}">
+                <f:ajax execute="@form" render="@form"/>
+            </p:commandButton>
+        </p:panelGrid>
+    </h:form>
+</h:body>
+</html>
